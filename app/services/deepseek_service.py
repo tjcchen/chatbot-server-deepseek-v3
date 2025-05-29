@@ -55,7 +55,7 @@ class DeepSeekService:
         
         async with httpx.AsyncClient() as client:
             response = await client.post(
-                f"{self.base_url}/v1/chat/completions",
+                f"{self.base_url}/chat/completions",
                 headers=headers,
                 json=payload,
                 timeout=60.0
@@ -70,19 +70,8 @@ class DeepSeekService:
                     pass
                 raise Exception(f"DeepSeek API error: {response.status_code} - {error_detail}")
             
-            response_data = response.json()
-            
-            # Create chat response
-            assistant_message = Message(
-                role="assistant",
-                content=response_data["choices"][0]["message"]["content"]
-            )
-            
-            return ChatResponse(
-                message=assistant_message,
-                model=response_data.get("model", self.model),
-                created_at=datetime.utcnow().isoformat()
-            )
+            # Return the complete response data directly
+            return response.json()
     
     async def stream_chat_completion(
         self, 
@@ -122,7 +111,7 @@ class DeepSeekService:
         async with httpx.AsyncClient() as client:
             async with client.stream(
                 "POST",
-                f"{self.base_url}/v1/chat/completions",
+                f"{self.base_url}/chat/completions",
                 headers=headers,
                 json=payload,
                 timeout=60.0

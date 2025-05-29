@@ -9,7 +9,7 @@ router = APIRouter()
 
 
 @router.post(
-    "/chat", 
+    "/", 
     response_model=ChatResponse,
     responses={
         400: {"model": ErrorResponse},
@@ -49,7 +49,7 @@ async def create_chat_completion(
         )
 
 
-@router.post("/chat/stream")
+@router.post("/stream")
 async def create_streaming_chat_completion(
     chat_request: ChatRequest,
     deepseek_service: DeepSeekService = Depends(lambda: DeepSeekService())

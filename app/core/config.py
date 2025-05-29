@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     # DeepSeek API settings
     DEEPSEEK_API_KEY: str = os.environ.get("DEEPSEEK_API_KEY", "")
     DEEPSEEK_API_BASE_URL: str = os.environ.get("DEEPSEEK_API_BASE_URL", "https://api.deepseek.com")
-    DEEPSEEK_MODEL: str = os.environ.get("DEEPSEEK_MODEL", "deepseek-v3")
+    DEEPSEEK_MODEL: str = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
 
     class Config:
         env_file = ".env"

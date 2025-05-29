@@ -26,11 +26,11 @@ class ChatResponse(BaseModel):
     Response model for chat completions
     """
     id: str = Field(..., description="Unique identifier for the completion.")
-    model: str = Field(..., description="The model used for the completion.")
     object: str = Field("chat.completion", description="The object type.")
     created: int = Field(..., description="The Unix timestamp (in seconds) of when the completion was created.")
+    model: str = Field(..., description="The model used for the completion.")
     choices: List[Dict[str, Any]] = Field(..., description="The generated completions.")
-    usage: Dict[str, int] = Field(..., description="Usage statistics for the completion request.")
+    usage: Dict[str, Any] = Field(..., description="Usage statistics for the completion request.")
 
 
 class ErrorResponse(BaseModel):
