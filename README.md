@@ -42,7 +42,7 @@ requirements.txt      # Project dependencies
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/chatbot-server-deepseek-v3.git
+git clone https://github.com/tjcchen/chatbot-server-deepseek-v3.git
 cd chatbot-server-deepseek-v3
 ```
 
